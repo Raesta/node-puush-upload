@@ -1,0 +1,23 @@
+{
+  "name": "node-puush-upload",
+  "version": "0.0.1",
+  "description": "Node package for uploading file(s) to puush.me",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raesta/node-puush-upload.git"
+  },
+  "author": "Raesta <contact@raesta.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Raesta/node-puush-upload/issues"
+  },
+  "homepage": "https://github.com/Raesta/node-puush-upload#readme",
+  "dependencies": {
+    "fs": "0.0.2",
+    "request": "^2.69.0"
+  }
+}
