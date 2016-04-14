@@ -31,10 +31,10 @@ function upload(file, apiUrl, apiKey, callback) {
   var formData = { 'k': apiKey, 'z': 'poop', 'f': fs.createReadStream(path) };
   request.post({url: apiUrl, formData: formData}, function optionalCallback(err, httpResponse, body) {
     if (err) {
-      throw new Error('upload failed: ' + err);
+      callback('upload failed: ' + err, null);
     } else {
       var data = body.split(',');
-      callback({ id: data[2], url: data[1] });
+      callback(null, { id: data[2], url: data[1] });
     }
   });
 }
