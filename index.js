@@ -17,7 +17,8 @@ Puush.prototype.single = function(path, callback) {
     throw new Error('path file is not defined.');
   else {
     if (path[0] !== '/') path = '/' + path;
-    upload(path, self.API_URL, self.API_KEY, function(data) {
+    upload(path, self.API_URL, self.API_KEY, function(err, data) {
+      if (err) throw new Error(err);
       if (typeof callback === 'undefined') return data;
       else callback(data);
     });
