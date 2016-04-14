@@ -1,3 +1,4 @@
+var async = require('async');
 var fs = require('fs');
 var request = require('request');
 
@@ -9,6 +10,7 @@ function Puush(apiKey) {
   else
     this.API_KEY = apiKey;
   this.API_URL = "https://puush.me/api/up";
+  this.IGNORED_FILES = ['.DS_Store', '.AppleDouble', '.LSOverride', 'Thumbs.db', 'ehthumbs.db'];
 };
 
 Puush.prototype.single = function(path, callback) {
@@ -24,6 +26,38 @@ Puush.prototype.single = function(path, callback) {
     });
   }
 };
+
+Puush.prototype.multi = function(dirName, callback) {
+  var self = this;
+  if (typeof dirName === 'undefined')
+    throw new Error('dir name is not defined.');
+  else {
+    getFiles(dirName, self.IGNORED_FILES, function(files) {
+      var data = [], asyncCounter = 0;
+      async.forEach(files, function(file) {
+        upload('/' + dirName + '/' + file, self.API_URL, self.API_KEY, function(err, result) {
+          if (err) console.log(err);
+          else data.push(result);
+          if (asyncCounter >= files.length) callback(data);
+        });
+      });
+    });
+  }
+};
+
+function getFiles(dirName, ignoredFiles, callback) {
+  fs.readdir(dirName, function(err, files) {
+    if (err) throw new Error(err);
+    else {
+      var data = [], asyncCounter = 0;
+      async.forEach(files, function(file) {
+        if (ignoredFiles.indexOf(file) === -1 && !fs.lstatSync(dirName + '/' + file).isDirectory()) data.push(file);
+        asyncCounter++;
+        if (asyncCounter >= files.length) callback(data);
+      });
+    }
+  });
+}
 
 function upload(file, apiUrl, apiKey, callback) {
   var path = require('path').dirname(require.main.filename) + file;
