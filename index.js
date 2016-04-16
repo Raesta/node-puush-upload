@@ -12,6 +12,7 @@ function Puush(apiKey) {
   this.IGNORED_FILES = ['.DS_Store', '.AppleDouble', '.LSOverride', 'Thumbs.db', 'ehthumbs.db'];
 }
 
+Puush.prototype.version = '1.0.0';
 Puush.prototype.API_URL = 'https://puush.me/api/up';
 
 Puush.prototype.single = function(path, callback) {
