@@ -9,9 +9,10 @@ function Puush(apiKey) {
     throw new Error('the api key is not defined.');
   else
     this.API_KEY = apiKey;
-  this.API_URL = "https://puush.me/api/up";
   this.IGNORED_FILES = ['.DS_Store', '.AppleDouble', '.LSOverride', 'Thumbs.db', 'ehthumbs.db'];
-};
+}
+
+Puush.prototype.API_URL = 'https://puush.me/api/up';
 
 Puush.prototype.single = function(path, callback) {
   var self = this;
