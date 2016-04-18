@@ -69,6 +69,7 @@ Puush.prototype.multi = function(dirName, callback) {
         upload('/' + dirName + '/' + file, self.API_URL, self.API_KEY, function(err, result) {
           if (err) console.log(err);
           else data.push(result);
+          asyncCounter++;
           if (asyncCounter >= files.length) callback(data);
         });
       });
