@@ -106,7 +106,7 @@ function getFiles(dirName, ignoredFiles, callback) {
  */
 function upload(file, apiUrl, apiKey, callback) {
   var path = require('path').dirname(require.main.filename) + file;
-  var headers = { 'User-Agent': 'node-puush-upload/0.1 (Npm module for uploading screenshots to puush; https://github.com/Raesta/node-puush-upload)'};
+  var headers = { 'User-Agent': 'node-puush-upload/1.0 (Npm module for uploading screenshots to puush; https://github.com/Raesta/node-puush-upload)'};
   var formData = { 'k': apiKey, 'z': 'poop', 'f': fs.createReadStream(path) };
   request.post({url: apiUrl, formData: formData}, function optionalCallback(err, httpResponse, body) {
     if (err) {
