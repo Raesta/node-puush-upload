@@ -1,12 +1,25 @@
 node-puush-upload
 ======
 
+[![NPM](https://nodei.co/npm/node-puush-upload.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-puush-upload/)
+
+[![npm version](https://badge.fury.io/js/node-puush-upload.svg)](https://badge.fury.io/js/node-puush-upload)
+
+
 Node package for uploading screenshots to [puush](http://puush.me/).
 
 ---
-* [Puush](#puushapikey) (apiKey) - Constructor, apiKey is required.
-* [simple](#simplefilename--callback) (filename, callback) - Upload file. Maximum filesize for free account: 272629051 bytes.
-* [multi](#multidir--callback) (dirname, callback) - Upload multiple files from a folder.
+
+### Installation
+```javascript
+$ npm install node-puush-upload
+```
+or
+```javascript
+$ npm install git://github.com/Raesta/node-puush-upload.git
+```
+
+---
 
 ### Example
 ```javascript
@@ -16,10 +29,18 @@ var puush = new Puush('YOURAPIKEY');
 ```
 
 ---
+
+* [Puush](#puushapikey) (apiKey) - Constructor, apiKey is required.
+* [simple](#simplefilename--callback) (filename, callback) - Upload file. Maximum filesize for free account: 272629051 bytes.
+* [multi](#multidir--callback) (dirname, callback) - Upload multiple files from a folder.
+
+---
+
 ### `Puush(apiKey)`
 Constructor, apiKey is required.
 
 ---
+
 #### `simple(filename, callback)`
 Upload a file.  
 Maximum file size for free account: 260MB-708B-filename.length,  
